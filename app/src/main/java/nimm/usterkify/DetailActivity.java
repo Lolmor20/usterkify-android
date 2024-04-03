@@ -15,17 +15,18 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView imageView = findViewById(R.id.detailImageView);
-        TextView textView = findViewById(R.id.detailTextView);
+        TextView titleView = findViewById(R.id.titleTextView);
+        TextView descriptionView = findViewById(R.id.descriptionTextView);
 
-        // Pobierz dane przekazane z poprzedniego widoku
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             Bitmap imageBitmap = extras.getParcelable("image");
-            String text = extras.getString("text");
+            String text = extras.getString("title");
+            String description = extras.getString("description");
 
-            // Ustaw obrazek i tekst w odpowiednich widokach
             imageView.setImageBitmap(imageBitmap);
-            textView.setText(text);
+            titleView.setText(text);
+            descriptionView.setText(description);
         }
     }
 }
