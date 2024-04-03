@@ -2,7 +2,6 @@ package nimm.usterkify;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,22 +34,14 @@ public class UsterkaDetailsDialogFragment extends DialogFragment {
 
         builder.setView(dialogView)
                 .setTitle("Enter Title and Description")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String title = titleEditText.getText().toString();
-                        String description = descriptionEditText.getText().toString();
-                        if (onSubmitClickListener != null) {
-                            onSubmitClickListener.onSubmit(title, description);
-                        }
+                .setPositiveButton("OK", (dialog, which) -> {
+                    String title = titleEditText.getText().toString();
+                    String description = descriptionEditText.getText().toString();
+                    if (onSubmitClickListener != null) {
+                        onSubmitClickListener.onSubmit(title, description);
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
         return builder.create();
     }
