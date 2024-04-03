@@ -2,7 +2,6 @@ package nimm.usterkify;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,13 +23,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button registerButton = findViewById(R.id.registerButton);
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tutaj możesz dodać logikę rejestracji
-                // W tym przykładzie zakładamy, że rejestracja jest zakończona sukcesem
-                registerSuccess();
-            }
+        registerButton.setOnClickListener(v -> {
+            // Tutaj możesz dodać logikę rejestracji
+            // W tym przykładzie zakładamy, że rejestracja jest zakończona sukcesem
+            registerSuccess();
         });
     }
 
