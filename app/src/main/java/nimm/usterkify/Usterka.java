@@ -2,7 +2,6 @@ package nimm.usterkify;
 
 import androidx.annotation.NonNull;
 
-import java.time.OffsetDateTime;
 import java.util.Date;
 
 import io.objectbox.annotation.Entity;
@@ -39,9 +38,5 @@ public class Usterka {
 
     public String getImageFileName() {
         return imageFileName;
-    }
-
-    public Date getCreationTime() {
-        return creationTime;
     }
 }

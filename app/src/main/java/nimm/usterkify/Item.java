@@ -3,8 +3,8 @@ package nimm.usterkify;
 import android.graphics.Bitmap;
 
 public class Item {
-    private Bitmap image;
-    private Usterka usterka;
+    private final Bitmap image;
+    private final Usterka usterka;
 
     public Item(Bitmap image, Usterka usterka) {
         this.image = image;
