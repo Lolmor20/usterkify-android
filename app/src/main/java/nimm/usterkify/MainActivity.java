@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-            dialog.show(getFragmentManager(), "UsterkaDetailsDialogFragment");
+            dialog.show(getSupportFragmentManager(), "UsterkaDetailsDialogFragment");
         }
     }
 
