@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import nimm.usterkify.R;
+import nimm.usterkify.activity.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

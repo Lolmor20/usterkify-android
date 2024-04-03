@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import nimm.usterkify.R;
 
 public class DetailActivity extends AppCompatActivity {
 

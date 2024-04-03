@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.activity.main;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
@@ -26,6 +26,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.objectbox.BoxStore;
+import nimm.usterkify.MyObjectBox;
+import nimm.usterkify.R;
+import nimm.usterkify.activity.DetailActivity;
+import nimm.usterkify.data.Usterka;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Item item = itemList.get(position);
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-            intent.putExtra("image", item.getImage());
-            intent.putExtra("title", item.getUsterka().getTitle());
-            intent.putExtra("description", item.getUsterka().getDescription());
+            intent.putExtra("image", item.image());
+            intent.putExtra("title", item.usterka().getTitle());
+            intent.putExtra("description", item.usterka().getDescription());
             startActivity(intent);
         });
     }

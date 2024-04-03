@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.activity.main;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import nimm.usterkify.R;
 
 public class CustomAdapter extends BaseAdapter {
 
@@ -43,8 +45,8 @@ public class CustomAdapter extends BaseAdapter {
         ImageView imageView = convertView.findViewById(R.id.imageView);
         TextView textView = convertView.findViewById(R.id.textView);
 
-        imageView.setImageBitmap(item.getImage());
-        textView.setText(item.getUsterka().getTitle());
+        imageView.setImageBitmap(item.image());
+        textView.setText(item.usterka().getTitle());
 
         return convertView;
     }

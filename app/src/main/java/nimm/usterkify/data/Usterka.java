@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.data;
 
 import androidx.annotation.NonNull;
 

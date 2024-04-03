@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.main.MainActivity">
 
     <ListView
         android:id="@+id/listView"
@@ -18,6 +18,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_launcher_foreground"/>
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
 </RelativeLayout>

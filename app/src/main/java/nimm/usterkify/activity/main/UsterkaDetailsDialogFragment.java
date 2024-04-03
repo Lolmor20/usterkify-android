@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.activity.main;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+
+import nimm.usterkify.R;
 
 public class UsterkaDetailsDialogFragment extends DialogFragment {
 
