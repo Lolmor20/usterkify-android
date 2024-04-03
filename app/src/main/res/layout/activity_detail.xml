@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="364dp"
         android:padding="16dp"
-        android:text="Title"
+        android:text="@string/image_title"
         android:textSize="18sp" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="2dp"
         android:padding="16dp"
-        android:text="Description"
+        android:text="@string/image_description"
         android:textSize="18sp" />
 
 </RelativeLayout>

@@ -9,9 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.util.Pair;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -35,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    private ListView listView;
     private CustomAdapter adapter;
     private BoxStore boxStore;
 
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         boxStore = MyObjectBox.builder().androidContext(this).build();
 
-        listView = findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.listView);
         List<Item> itemList = boxStore.boxFor(Usterka.class).getAll().stream()
                 .map(usterka -> new Item(getBitmapFromFile(usterka.getImageFileName()), usterka))
                 .collect(Collectors.toList());
@@ -75,16 +72,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Click listener for list items
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Item item = itemList.get(position);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("image", item.getImage());
-                intent.putExtra("title", item.getUsterka().getTitle());
-                intent.putExtra("description", item.getUsterka().getDescription());
-                startActivity(intent);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Item item = itemList.get(position);
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra("image", item.getImage());
+            intent.putExtra("title", item.getUsterka().getTitle());
+            intent.putExtra("description", item.getUsterka().getDescription());
+            startActivity(intent);
         });
     }
 
@@ -107,19 +101,16 @@ public class MainActivity extends AppCompatActivity {
 
             UsterkaDetailsDialogFragment dialog = new UsterkaDetailsDialogFragment();
 
-            dialog.setOnSubmitClickListener(new UsterkaDetailsDialogFragment.OnSubmitClickListener() {
-                @Override
-                public void onSubmit(String title, String description) {
-                    Date now = Calendar.getInstance().getTime();
-                    String fileName = now + ".png";
-                    Usterka usterka = new Usterka(0, title, description, fileName, now);
-                    try {
-                        saveUsterka(usterka, imageBitmap);
-                        adapter.itemList.add(new Item(imageBitmap, usterka));
-                        adapter.notifyDataSetChanged();
-                    } catch (IOException e) {
-                        Log.e(TAG, e.getMessage());
-                    }
+            dialog.setOnSubmitClickListener((title, description) -> {
+                Date now = Calendar.getInstance().getTime();
+                String fileName = now + ".png";
+                Usterka usterka = new Usterka(0, title, description, fileName, now);
+                try {
+                    saveUsterka(usterka, imageBitmap);
+                    adapter.itemList.add(new Item(imageBitmap, usterka));
+                    adapter.notifyDataSetChanged();
+                } catch (IOException e) {
+                    Log.e(TAG, e.getMessage());
                 }
             });
             dialog.show(getSupportFragmentManager(), "UsterkaDetailsDialogFragment");

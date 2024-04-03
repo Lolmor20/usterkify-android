@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">Adres e-mail</string>
+    <string name="login">Zaloguj</string>
+    <string name="password">Hasło</string>
+    <string name="no_login">Używaj aplikacji bez logowania</string>
+    <string name="register">Zarejestruj się</string>
+    <string name="image_description">Opis</string>
+    <string name="image_title">Tytuł</string>
+</resources>
