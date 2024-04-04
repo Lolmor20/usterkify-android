@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/localModeLoginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register"
-        android:layout_below="@id/loginButton"
+        android:layout_below="@id/localModeLoginButton"
         android:layout_marginTop="16dp" />
 
     <Button

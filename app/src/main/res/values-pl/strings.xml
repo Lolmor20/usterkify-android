@@ -7,4 +7,13 @@
     <string name="register">Zarejestruj się</string>
     <string name="image_description">Opis</string>
     <string name="image_title">Tytuł</string>
+    <string name="app_in_local_mode_msg">Aplikacja działa w trybie lokalnym. Możesz zalogować się w dowolnym momencie</string>
+    <string name="successful_login">Zalogowano pomyślnie</string>
+    <string name="hello_msg">Witaj, użytkowniku!</string>
+    <string name="hello_msg_logged">Witaj, %1$s!</string>
+    <string name="unsuccessful_login">Logowanie nie powiodło się</string>
+    <string name="last_name">Nazwisko</string>
+    <string name="first_name">Imię</string>
+    <string name="register_successful">Rejestracja zakończona sukcesem</string>
+    <string name="registration_unsuccessful">Rejestracja nie powiodła się</string>
 </resources>

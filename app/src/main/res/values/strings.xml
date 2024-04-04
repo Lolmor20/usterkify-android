@@ -8,4 +8,13 @@
     <string name="register">Register</string>
     <string name="image_description">Description</string>
     <string name="image_title">Title</string>
+    <string name="successful_login">Successfully logged in</string>
+    <string name="app_in_local_mode_msg">Application works in local mode. You can log in at any time</string>
+    <string name="hello_msg">Hello, user!</string>
+    <string name="hello_msg_logged">Hello, %1$s!</string>
+    <string name="unsuccessful_login">Failed to log in</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="register_successful">Registration successful</string>
+    <string name="registration_unsuccessful">Registration unsuccessful</string>
 </resources>

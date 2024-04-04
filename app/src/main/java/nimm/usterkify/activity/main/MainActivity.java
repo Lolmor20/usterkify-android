@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
@@ -26,9 +29,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.objectbox.BoxStore;
-import nimm.usterkify.MyObjectBox;
 import nimm.usterkify.R;
+import nimm.usterkify.UserSessionInfo;
+import nimm.usterkify.UsterkifyAppContext;
+import nimm.usterkify.UsterkifySharedPreferences;
 import nimm.usterkify.activity.DetailActivity;
+import nimm.usterkify.activity.LoginActivity;
+import nimm.usterkify.data.ObjectBoxRepository;
 import nimm.usterkify.data.Usterka;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,9 +50,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        boxStore = MyObjectBox.builder().androidContext(this).build();
+        Button logInButton = findViewById(R.id.localModeLoginButton);
+        ImageView avatarView = findViewById(R.id.avatarImageView);
+        TextView helloMsgView = findViewById(R.id.welcomeTextView);
+
+        UserSessionInfo userSessionInfo = UsterkifyAppContext.getInstance().getUserSessionInfo();
+
+        if (userSessionInfo.isUserLoggedIn()) {
+            logInButton.setVisibility(View.GONE);
+            avatarView.setVisibility(View.VISIBLE);
+            helloMsgView.setText(getString(R.string.hello_msg_logged, userSessionInfo.getUserInfo().getFirstName()));
+        } else {
+            logInButton.setOnClickListener((l) -> {
+                UsterkifySharedPreferences.getInstance().removeAppMode(getApplicationContext());
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            });
+        }
+
+        boxStore = ObjectBoxRepository.getInstance().getBoxStore(getApplicationContext());
 
         ListView listView = findViewById(R.id.listView);
         List<Item> itemList = boxStore.boxFor(Usterka.class).getAll().stream()
