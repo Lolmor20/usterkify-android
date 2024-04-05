@@ -35,15 +35,15 @@ public class UsterkaDetailsDialogFragment extends DialogFragment {
         descriptionEditText = dialogView.findViewById(R.id.descriptionEditText);
 
         builder.setView(dialogView)
-                .setTitle("Enter Title and Description")
-                .setPositiveButton("OK", (dialog, which) -> {
+                .setTitle(getString(R.string.title_and_description))
+                .setPositiveButton(getString(R.string.ok), (dialog, which) -> {
                     String title = titleEditText.getText().toString();
                     String description = descriptionEditText.getText().toString();
                     if (onSubmitClickListener != null) {
                         onSubmitClickListener.onSubmit(title, description);
                     }
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.cancel());
 
         return builder.create();
     }

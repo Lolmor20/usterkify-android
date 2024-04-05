@@ -15,13 +15,17 @@ public class Usterka {
     public String description;
     public String imageFileName;
     public Date creationTime;
+    public long userId;
 
-    public Usterka(long id, String title, String description, String imageFileName, @NonNull Date creationTime) {
+    public static long NO_USER_ID = 0;
+
+    public Usterka(long id, String title, String description, String imageFileName, @NonNull Date creationTime, long userId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.imageFileName = imageFileName;
         this.creationTime = creationTime;
+        this.userId = userId;
     }
 
     public long getId() {
@@ -38,5 +42,37 @@ public class Usterka {
 
     public String getImageFileName() {
         return imageFileName;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

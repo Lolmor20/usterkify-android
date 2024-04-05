@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.objectbox.BoxStore;
+import io.objectbox.query.Query;
 import nimm.usterkify.R;
 import nimm.usterkify.UserSessionInfo;
 import nimm.usterkify.UsterkifyAppContext;
@@ -37,6 +38,7 @@ import nimm.usterkify.activity.DetailActivity;
 import nimm.usterkify.activity.LoginActivity;
 import nimm.usterkify.data.ObjectBoxRepository;
 import nimm.usterkify.data.Usterka;
+import nimm.usterkify.data.Usterka_;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,13 +77,20 @@ public class MainActivity extends AppCompatActivity {
         boxStore = ObjectBoxRepository.getInstance().getBoxStore(getApplicationContext());
 
         ListView listView = findViewById(R.id.listView);
-        List<Item> itemList = boxStore.boxFor(Usterka.class).getAll().stream()
+        long userId;
+        if (UsterkifyAppContext.getInstance().getUserSessionInfo().isUserLoggedIn()) {
+            userId = UsterkifyAppContext.getInstance().getUserSessionInfo().getUserInfo().getId();
+        } else {
+            userId = Usterka.NO_USER_ID;
+        }
+
+        List<Item> itemList = boxStore.boxFor(Usterka.class).query(Usterka_.userId.equal(userId)).build().find()
+                .stream()
                 .map(usterka -> new Item(getBitmapFromFile(usterka.getImageFileName()), usterka))
                 .collect(Collectors.toList());
         adapter = new CustomAdapter(itemList);
         listView.setAdapter(adapter);
 
-        // Floating action button
         findViewById(R.id.fab_add).setOnClickListener(new View.OnClickListener() {
             private final ActivityResultLauncher<String> requestPermissionLauncher =
                     registerForActivityResult(new RequestPermission(), isGranted -> {
@@ -102,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Click listener for list items
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Item item = itemList.get(position);
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
@@ -135,7 +143,12 @@ public class MainActivity extends AppCompatActivity {
             dialog.setOnSubmitClickListener((title, description) -> {
                 Date now = Calendar.getInstance().getTime();
                 String fileName = now + ".png";
-                Usterka usterka = new Usterka(0, title, description, fileName, now);
+                Usterka usterka;
+                if (UsterkifyAppContext.getInstance().getUserSessionInfo().isUserLoggedIn()) {
+                    usterka = new Usterka(0, title, description, fileName, now, UsterkifyAppContext.getInstance().getUserSessionInfo().getUserInfo().getId());
+                } else {
+                    usterka = new Usterka(0, title, description, fileName, now, Usterka.NO_USER_ID);
+                }
                 try {
                     saveUsterka(usterka, imageBitmap);
                     adapter.itemList.add(new Item(imageBitmap, usterka));

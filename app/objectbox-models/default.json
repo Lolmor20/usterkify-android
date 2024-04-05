@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:7989164194050154563",
-      "lastPropertyId": "5:8046801722554629543",
+      "lastPropertyId": "6:7593803233601414174",
       "name": "Usterka",
       "properties": [
         {
@@ -33,6 +33,11 @@
           "id": "5:8046801722554629543",
           "name": "creationTime",
           "type": 10
+        },
+        {
+          "id": "6:7593803233601414174",
+          "name": "userId",
+          "type": 6
         }
       ],
       "relations": []

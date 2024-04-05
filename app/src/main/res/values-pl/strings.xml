@@ -16,4 +16,7 @@
     <string name="first_name">Imię</string>
     <string name="register_successful">Rejestracja zakończona sukcesem</string>
     <string name="registration_unsuccessful">Rejestracja nie powiodła się</string>
+    <string name="title_and_description">Wprowadź tytuł i opis</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Anuluj</string>
 </resources>

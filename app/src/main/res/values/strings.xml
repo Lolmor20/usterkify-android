@@ -17,4 +17,7 @@
     <string name="first_name">First name</string>
     <string name="register_successful">Registration successful</string>
     <string name="registration_unsuccessful">Registration unsuccessful</string>
+    <string name="title_and_description">Enter title and description</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>
