@@ -3,23 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".activity.DetailActivity">
 
     <ImageView
         android:id="@+id/detailImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerInside"
+        android:layout_height="471dp"
+        android:layout_alignBottom="@+id/titleTextView"
+        android:layout_marginBottom="56dp"
         android:adjustViewBounds="true"
-        android:layout_above="@id/detailTextView" />
+        android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/detailTextView"
+        android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/descriptionTextView"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="364dp"
         android:padding="16dp"
-        android:textSize="18sp"
-        android:text="Detail Text" />
+        android:text="@string/image_title"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="361dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="2dp"
+        android:padding="16dp"
+        android:text="@string/image_description"
+        android:textSize="18sp" />
 
 </RelativeLayout>

@@ -2,3 +2,12 @@
 plugins {
     id("com.android.application") version "8.2.0" apply false
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("io.objectbox:objectbox-gradle-plugin:3.8.0")
+    }
+}

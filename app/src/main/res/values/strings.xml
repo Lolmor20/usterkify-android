@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">usterkify</string>
+    <string name="app_name" translatable="false">usterkify</string>
+
+    <string name="email">Email address</string>
+    <string name="login">Log in</string>
+    <string name="password">Password</string>
+    <string name="no_login">Use app without logging in</string>
+    <string name="register">Register</string>
+    <string name="image_description">Description</string>
+    <string name="image_title">Title</string>
+    <string name="successful_login">Successfully logged in</string>
+    <string name="app_in_local_mode_msg">Application works in local mode. You can log in at any time</string>
+    <string name="hello_msg">Hello, user!</string>
+    <string name="hello_msg_logged">Hello, %1$s!</string>
+    <string name="unsuccessful_login">Failed to log in</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="register_successful">Registration successful</string>
+    <string name="registration_unsuccessful">Registration unsuccessful</string>
+    <string name="title_and_description">Enter title and description</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

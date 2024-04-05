@@ -1,4 +1,4 @@
-package nimm.usterkify;
+package nimm.usterkify.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import nimm.usterkify.R;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -15,17 +17,18 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView imageView = findViewById(R.id.detailImageView);
-        TextView textView = findViewById(R.id.detailTextView);
+        TextView titleView = findViewById(R.id.titleTextView);
+        TextView descriptionView = findViewById(R.id.descriptionTextView);
 
-        // Pobierz dane przekazane z poprzedniego widoku
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             Bitmap imageBitmap = extras.getParcelable("image");
-            String text = extras.getString("text");
+            String text = extras.getString("title");
+            String description = extras.getString("description");
 
-            // Ustaw obrazek i tekst w odpowiednich widokach
             imageView.setImageBitmap(imageBitmap);
-            textView.setText(text);
+            titleView.setText(text);
+            descriptionView.setText(description);
         }
     }
 }
