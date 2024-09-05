@@ -28,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private BoxStore boxStore;
 
+    private final int MIN_PASS_LENGTH = 3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,9 @@ public class RegisterActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        // TODO validation
+        if (!validateForm(firstName, lastName, email, password)) {
+            return false;
+        }
 
         User user = new User(0, firstName, lastName, email, password, Calendar.getInstance().getTime());
         Box<User> box = boxStore.boxFor(User.class);
@@ -70,5 +74,34 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private boolean validateForm(String firstName, String lastName, String email, String password) {
+        boolean errorsExist = false;
+
+        if (firstName.isBlank()) {
+            errorsExist = true;
+            firstNameEditText.setError(getString(R.string.first_name_blank_error));
+        }
+
+        if (lastName.isBlank()) {
+            errorsExist = true;
+            lastNameEditText.setError(getString(R.string.last_name_blank_error));
+        }
+
+        if (email.isBlank()) {
+            errorsExist = true;
+            emailEditText.setError(getString(R.string.email_blank_error));
+        }
+
+        if (password.isBlank()) {
+            errorsExist = true;
+            passwordEditText.setError(getString(R.string.password_blank_error));
+        } else if (password.length() < MIN_PASS_LENGTH) {
+            errorsExist = true;
+            passwordEditText.setError(getString(R.string.password_too_short_error, MIN_PASS_LENGTH));
+        }
+
+        return !errorsExist;
     }
 }

@@ -87,8 +87,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean logIn() {
-        String email = ((EditText) findViewById(R.id.editTextEmail)).getText().toString();
-        String password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
+        EditText emailView = findViewById(R.id.editTextEmail);
+        EditText passwordView = findViewById(R.id.editTextPassword);
+
+        String email = emailView.getText().toString();
+        String password = passwordView.getText().toString();
+
+        boolean errorsExist = false;
+
+        if (email.isBlank()) {
+            errorsExist = true;
+            emailView.setError(getString(R.string.email_blank_error));
+        }
+
+        if (password.isBlank()) {
+            errorsExist = true;
+            passwordView.setError(getString(R.string.password_blank_error));
+        }
+
+        if (errorsExist) {
+            return false;
+        }
+
         Box<User> box = boxStore.boxFor(User.class);
         Query<User> query = box.query(User_.email.equal(email)).build();
         User user = query.findUnique();

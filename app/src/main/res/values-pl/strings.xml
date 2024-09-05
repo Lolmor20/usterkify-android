@@ -19,4 +19,9 @@
     <string name="title_and_description">Wprowadź tytuł i opis</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
+    <string name="email_blank_error">E-mail wymagany</string>
+    <string name="password_blank_error">Hasło wymagane</string>
+    <string name="first_name_blank_error">Imię jest wymagane</string>
+    <string name="last_name_blank_error">Nazwisko jest wymagane</string>
+    <string name="password_too_short_error">Hasło musi zawierać co najmniej %1$d znaków</string>
 </resources>

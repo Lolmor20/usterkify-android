@@ -20,4 +20,9 @@
     <string name="title_and_description">Enter title and description</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="email_blank_error">E-mail is required</string>
+    <string name="password_blank_error">Password is required</string>
+    <string name="first_name_blank_error">First name is required</string>
+    <string name="last_name_blank_error">Last name is required</string>
+    <string name="password_too_short_error">Password must have at least %1$d characters</string>
 </resources>
